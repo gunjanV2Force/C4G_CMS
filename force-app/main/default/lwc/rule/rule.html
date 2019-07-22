@@ -1,0 +1,107 @@
+<template>
+        <lightning-accordion-section class="accordian-section" name={myIndex} label= {accordianLabel} >
+                <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-form-element">           
+                                        <lightning-input type="text"  
+                                        name="ruleLabel"
+                                        label='Label'
+                                        placeholder="" value={_rule.masterLabel}
+                                        onchange={handleRuleLabelChange}
+                                        required>
+                                        </lightning-input>
+                                </div> 
+                        </div>
+                        <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-form-element form-inline">
+                                        <!--<label class="slds-form-element__label">Name</label>                
+                                        <lightning-input type="text"  name="ruleName" placeholder="Name" value={_rule.developerName}
+                                                ></lightning-input-->
+                                </div> 
+                        </div>
+                </div>
+                <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-form-element">
+                                        <lightning-combobox
+                                        name="Object"
+                                        label="Object"
+                                        value={objSelectedValue}
+                                        placeholder="Select Object"
+                                        options={objectSelectOptions}
+                                        onchange={handleObjSelection} 
+                                        required
+                                        ></lightning-combobox> 
+                                </div> 
+                        </div>
+                        <div class="slds-col slds-size_6-of-12" aria-haspopup="listbox" role="combobox">
+                                <div class="slds-form-element">
+                                        <lightning-combobox
+                                        name="Field"
+                                        label="Field"
+                                        value={fieldSelectedValue}
+                                        placeholder="Select Field"
+                                        options={fieldSelectOptions}
+                                        onchange={handleFieldSelection}
+                                        required
+                                ></lightning-combobox>
+                                </div>
+                        </div>
+                </div>
+                <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-form-element">
+                                        <template if:true={IsBooleanField}>
+                                                <lightning-combobox
+                                                name="Operators"
+                                                label="Operator"
+                                                value={operatorSelectedValue}
+                                                placeholder="Select Operator" 
+                                                options={operatorSelectOptions}
+                                                disabled
+                                                onchange={handleOperatorSelection}
+                                                required></lightning-combobox>
+                                        </template>
+                                        <template if:false={IsBooleanField}>
+                                                        <lightning-combobox
+                                                        name="Operators"
+                                                        label="Operator"
+                                                        value={operatorSelectedValue}
+                                                        placeholder="Select Operator" 
+                                                        options={operatorSelectOptions}
+                                                        onchange={handleOperatorSelection}
+                                                        required></lightning-combobox>
+                                                </template>
+                                        
+                                </div>
+                        </div>
+                        <div class="slds-col slds-size_6-of-12">
+                        <c-match-value-box field-type={dataType} field-api-name={fieldSelectedValue} obj-api-name={objSelectedValue} 
+                                                        operator={operatorSelectedValue} matching-value-primary={matchingValuePrimary}
+                                                        matching-value-secondary={matchingValueSecondary} 
+                                                        is-boolean={isBoolean}
+                                                        onmatchvaluemodify={handleMatchValueModify}></c-match-value-box>
+                        </div>
+                </div>
+
+                <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_6-of-12">
+                                <div class="slds-form-element">
+                                                <lightning-combobox
+                                                name="Macthing Priority"
+                                                label="Macthing Priority"
+                                                value={matchingPriorityValue}
+                                                placeholder="Select Matching Priority" 
+                                                options={matchingPriorityOptions}
+                                                onchange={handleMatchingPriority}
+                                                ></lightning-combobox>
+                                </div>
+                        </div>
+                        <div class="slds-col slds-size_6-of-12 slds-active">
+                                        <lightning-input type="checkbox" label="Active" 
+                                        name="Active Rule"
+                                        value={activeRule}></lightning-input>
+                        </div>
+                </div>
+        </lightning-accordion-section>
+</template>

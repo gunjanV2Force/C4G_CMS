@@ -1,0 +1,70 @@
+.white-bg{
+    background: #fff;
+    padding:30px;
+}
+h2 .grey-bg{
+    background: #f3f2f2;
+    color:#000;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.slds-outline-btn, .slds-outline-btn:focus, .slds-outline-btn:active, .slds-outline-btn:hover{
+    color:#0070d2;
+    font-size:14px;
+    margin-top:20px;
+    display: block;
+}
+.rightSideBlock .accordian-section {
+    border:1px solid #ccc;
+    margin:20px 0;
+    padding:8px;
+}
+.accordian-section .slds-is-absolute{
+    right:20px;
+    top:0;
+}
+.accordian-section .slds-gutters{
+    margin-bottom:10px;
+}
+.checkbox-block{
+    margin-top:22px;
+}
+.rule-set-list  ul{padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 25px;
+    box-shadow: 1px 1px 5px 2px #eee;
+}
+.rule-set-list li{
+    list-style-type: decimal;
+    list-style-position: inside;
+    padding: 4px 12px;
+    color:#0070d2;
+    border-bottom:1px solid #eee;
+
+}
+.rule-set-list li.active{
+background:#ffb75d;
+}
+.slds-new-rule{
+    margin-top:-10px;
+}
+@media only screen and (min-width:300px) and (max-width:767px){
+    .white-bg{
+        padding:5px;
+    }
+    .slds-grid{
+        display:block;
+    }
+    .slds-size_4-of-12, .slds-size_6-of-12, .slds-size_8-of-12{
+        width:100%;
+    }
+    .slds-new-rule{
+        margin-top:-12px;
+    }
+}

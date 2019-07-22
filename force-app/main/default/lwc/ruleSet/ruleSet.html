@@ -1,0 +1,41 @@
+<template>
+        <h2><span class="grey-bg">Rule Set - Find Professional Mentors</span></h2>
+        <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                        <lightning-input type="text"  class="RuleSetName"  value="" label="Name" required >
+                        </lightning-input>
+                        <!--lightning-button label="Check Validation" title="Validation"  class="slds-m-left_x-small slds-outline-btn" onclick={CheckValidation}></lightning-button-->
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                                <lightning-textarea  name="input7" label="Description" required value="" placeholder=""  maxlength="140" message-when-too-long="A maximum of 140 characters are allowed in a tweet." message-when-value-missing="An empty message cannot be posted." ></lightning-textarea>
+                </div>
+        </div>
+                        <div class="slds-text-align_center">
+                                <lightning-button label="Create New Rule" title="Create New Rule"  class="slds-m-left_x-small slds-outline-btn" onclick={handleNewRule}></lightning-button>
+                                <!--lightning-button label="Save Rule Set" title="Save Rule Set"  class="slds-m-left_x-small slds-outline-btn" onclick={handleSaveRuleSet}></lightning-button-->
+                        </div>
+                        <lightning-input type="checkbox" label="Active" name="ruleset"></lightning-input>
+                        <lightning-input type="checkbox" label="Default Rule Set" name="ruleset"></lightning-input>
+        
+                        <lightning-accordion class="example-accordion"
+                        onsectiontoggle={handleToggleSection}
+                        active-section-name={activeSections}>
+                
+                <template for:each={ruleSet.lstRule} for:item="ruleI"> 
+                <!--===={ruleI.index}====={ruleI.masterLabel}====={ruleI.objectApiName}===={ruleI.fieldApiName}==={ruleI.operator}==={ruleI.primaryValue}==={ruleI.secondaryValue}==-->
+                <c-rule key={ruleI.index} rule={ruleI} base-object={baseObject}
+                        onrulemodify={ruleModificationHandle} ></c-rule>   
+                </template>
+                        
+                <!--<lightning-accordion-section class="accordian-section" name="Rule2" label="Rule2 - Match on Profession">
+                <p>This is the content area for section B.</p>
+                
+                </lightning-accordion-section>
+        
+                <lightning-accordion-section class="accordian-section" name="Rule3" label="Rule3 - Match on Proximity">
+                <p>This is the content area for section C.</p>
+                
+                </lightning-accordion-section>-->
+        </lightning-accordion>
+               
+</template>

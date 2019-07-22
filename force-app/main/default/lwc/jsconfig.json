@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/adminContainer": [
+                "adminContainer/adminContainer.js"
+            ],
+            "c/matchValueBox": [
+                "matchValueBox/matchValueBox.js"
+            ],
+            "c/rule": [
+                "rule/rule.js"
+            ],
+            "c/ruleSet": [
+                "ruleSet/ruleSet.js"
+            ],
+            "c/settings": [
+                "settings/settings.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

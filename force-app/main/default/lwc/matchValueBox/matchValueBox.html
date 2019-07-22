@@ -1,0 +1,179 @@
+<template>
+
+    <!--==={fieldType}==={fieldApiName}==={objApiName}==={operator}=={matchingValuePrimary}=={matchingValueSecondary}= -->
+    <!--==Number:-=={isNumber}==Boolean:-=={isBoolean}==Picklist:-=={isPicklist}==Id:-={isID}==Text:-={IsText}===Reference:-{isReference}==-->
+    
+    <template if:true={isCurrency}>
+        <template if:true={isSingleInput}>
+            <div class="slds-form-element">
+                 <lightning-input type="number" name="number" label="Match Value" formatter="currency" value={matchingValPrimaryCurrency} onchange={handlePrimaryCurrencyChange}></lightning-input>
+            </div>
+        </template>
+        <template if:true={isTwoInputs}>
+            <div class="slds-form-element">
+                <lightning-input type="number" class="currency1" name="number" label="From" formatter="currency" value={matchingValPrimaryCurrency} onchange={handlePrimaryCurrencyChange}></lightning-input>
+                <lightning-input type="number" class="currency2" name="number" label="To" formatter="currency" value={matchingValSecondaryCurrency} onchange={handleSecondaryCurrencyChange}></lightning-input>
+            </div>
+        </template>
+    </template>
+
+    <template if:true={isDate}>
+        <template if:true={isSingleInput}>
+                <div class="slds-form-element">
+                    <lightning-input type="date" name="date" label="Date" value={matchingValPrimaryDate} 
+                    onchange={handlePrimaryDateChange}></lightning-input>
+                </div>
+        </template>
+        <template if:true={isTwoInputs}>
+            <div class="slds-form-element">
+                <lightning-input type="date" class="date1" name="date1" label="From" value={matchingValPrimaryDate}  
+                    onchange={handlePrimaryDateChange}></lightning-input>
+                <lightning-input type="date" class="date2" name="date2" label="To" value={matchingValSecondaryDate} 
+                    onchange={handleSecondaryDateChange}></lightning-input>
+            </div>
+        </template>
+        <template if:true={isRangePicklist}>
+            <div class="slds-form-element">
+                <lightning-combobox
+                name="WithinRange"
+                label="Within Range"
+                value={withinRange}
+                placeholder="Select Range"
+                options={withinRangeOptions} 
+                required
+                onchange={handleDateWithinRangeChange}
+                ></lightning-combobox> 
+            </div>
+        </template>
+    </template>
+
+
+    <template if:true={isDateTime}> 
+        <template if:true={isSingleInput}>
+            <div class="slds-form-element">
+                <lightning-input type="datetime" name="datetime" label="Date/Time" value={matchingValPrimaryDateTime} 
+                onchange={handlePrimaryDateTimeChange}></lightning-input>
+            </div>
+        </template>
+         <template if:true={isTwoInputs}>
+            <div class="slds-form-element">
+                <lightning-input type="datetime" class="dateTime1" name="From" label="From" value={matchingValPrimaryDateTime} 
+                onchange={handlePrimaryDateTimeChange}></lightning-input>
+                <lightning-input type="datetime" class="dateTime2" name="To" label="To" value={matchingValSecondaryDateTime} 
+                onchange={handleSecondaryDateTimeChange}></lightning-input>
+            </div>
+        </template>
+        <template if:true={isRangePicklist}>
+                <div class="slds-form-element">
+                    <lightning-combobox
+                    name="WithinRange"
+                    label="Within Range"
+                    value={withinRange}
+                    placeholder="Select Range"
+                    options={withinRangeOptions} 
+                    required
+                    onchange={handleDateWithinRangeChange}
+                    ></lightning-combobox> 
+                </div>
+        </template>
+    </template>
+
+
+    <template if:true={isText}>
+        <lightning-input type="text"  name="matchValue" label="Match Value" placeholder="" value={matchingValPrimaryText}
+            onchange={handlePrimaryTextChange}></lightning-input>
+    </template>
+
+
+    <template if:true={isID}>                 
+         <lightning-input type="text" name="matchValue" label="Record Id" placeholder="" value={matchingValPrimaryText}
+             onchange={handlePrimaryTextChange}></lightning-input>          
+    </template>
+
+
+    <template if:true={isReference}>
+        <template if:true={isSingleInput}>               
+            <lightning-input type="text"  name="matchValue" label="Record Id" value={matchingValPrimaryText} 
+             required placeholder="Record Id" onchange={handlePrimaryTextChange}></lightning-input>
+        </template>
+    </template>
+
+
+    <template if:true={isMultiPicklist}>
+            <lightning-dual-listbox name="Match Values"
+            label="Match Values"
+            source-label="Available"
+            selected-label="Selected"
+            field-level-help="This is a dual listbox"
+            value={multiPickSelectedValues}
+            options={picklistSelectOptions}
+            onchange={handleMultiSChange}
+            ></lightning-dual-listbox>
+    </template>
+     
+    <template if:true={isPicklist}>
+            <lightning-combobox
+            name="pick"
+            label="Picklist"
+            value={pickSelectedValue}
+            options={picklistSelectOptions}
+            onchange={handlePicklistChange}
+            >
+            </lightning-combobox>
+    </template>
+
+
+    <template if:true={isBoolean}>    
+        <lightning-combobox
+            name="boolean"
+            label="Equals"
+            value={checkBoxValue}
+            placeholder="Select Value"
+            options={checkBoxChoices}
+            onchange={handleCheckBoxChange}
+            >
+        </lightning-combobox> 
+    </template>
+
+
+    <template if:true={isAddress}>
+            <lightning-input type="number" 
+            name="Address" label="Match Radius In Miles" value={matchingAddress} 
+            onchange={handleAddressChange}></lightning-input>
+    </template>
+
+
+    <template if:true={isNumber}>
+            <template if:true={isSingleInput}>
+                <div class="slds-form-element">
+                    <lightning-input type="number" 
+                    name="number" label="Number" value={matchingValPrimaryNum} 
+                    onchange={handlePrimaryNumChange}></lightning-input>
+                </div>
+            </template>
+            <template if:true={isTwoInputs}>
+                <div class="slds-form-element">
+                    <lightning-input type="number" class="number1" name="number" label="From" 
+                    value={matchingValPrimaryNum} onchange={handlePrimaryNumChange}>
+                    </lightning-input>
+                    <lightning-input type="number" class="number2" name="number" 
+                    label="To" value={matchingValSecondaryNum} 
+                    onchange={handleSecondaryNumChange}></lightning-input>
+                </div>
+            </template>
+    </template>
+
+
+    <template if:true={isTextArea}>
+            <div class="slds-form-element">
+                <lightning-textarea
+                name="textArea"
+                value={matchingTextArea}
+                label="Match Value"
+                max-length="300"
+                onchange={handleTextAreaChange}>
+                </lightning-textarea>
+            </div>
+    </template>
+    
+</template>

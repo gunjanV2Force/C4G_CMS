@@ -1,0 +1,39 @@
+<template>
+    <lightning-accordion class="accordion" allow-multiple-sections-open 
+        onsectiontoggle={handleToggleSection}
+        active-section-name={activeSections}>
+
+            <lightning-accordion-section class="accordian-section slds-is-relative" name="settings" label="Settings">
+                <div class="slds-form-element slds-p-bottom_medium">
+                    <lightning-input type="text"  name="rulename"  label="Maximum number of match results to display" required placeholder="Placeholder Text" value="1000"></lightning-input>
+                </div>
+                <div class="slds-form-element slds-p-bottom_medium">
+                        <lightning-combobox
+                            name="contact"
+                            label="Which object to match"
+                            value=""
+                            required
+                            placeholder="Contact"
+                            options={objectMatchSelectoptions}
+                        >
+                        </lightning-combobox>
+                </div>   
+                </lightning-accordion-section>
+        
+                <lightning-accordion-section class="accordian-section slds-is-relative slds-p-bottom_medium" name="rulesets" label="Rule Sets">
+                        <div class="slds-text-align_right slds-is-absolute slds-new-rule">
+                                        <lightning-button label="New Rule Set" title="New Rule Set"  class="slds-m-left_x-small slds-outline-btn" onclick={handleToggleActive}></lightning-button>
+                                </div>   
+                                <div class="rule-set-list">
+                                    <ul>
+                                    <li class="active" onclick={handleToggleActive}>Find Professional Mentors</li> 
+                                    <li  onclick={handleToggleActive}>Student Teacher Match</li>        
+                                    </ul>
+                                </div>         
+                    
+                </lightning-accordion-section>
+        
+    
+    </lightning-accordion>    
+                            
+</template>

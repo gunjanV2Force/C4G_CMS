@@ -1,0 +1,37 @@
+.white-bg{
+    background: #fff;
+    padding:30px;
+}
+h2 .grey-bg{
+    background: #f3f2f2;
+    color:#000;
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+} 
+.slds-outline-btn, .slds-outline-btn:focus, .slds-outline-btn:active, .slds-outline-btn:hover{
+    color:#0070d2;
+    font-size:16px;
+    margin-top:20px;
+    display: block;
+}
+.accordian-section {
+    border:1px solid #ccc;
+    margin:20px 0;
+    padding:8px;
+}
+:host .slds-accordion__summary-heading {
+    display: flex;
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 1.25;
+    color: #000;
+    font-weight: bold;
+}
+
+.slds-active{
+    margin-top : 27px;
+}
